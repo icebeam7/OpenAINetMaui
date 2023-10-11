@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OpenAINetMaui.Views.ChatView"
+             xmlns:vm="clr-namespace:OpenAINetMaui.ViewModels"
+             x:DataType="vm:ChatViewModel"
+             Title="ChatView">
+    
+    <Grid Margin="10" 
+          RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+          ColumnDefinitions="Auto"
+          RowSpacing="10"
+          ColumnSpacing="10">
+
+        <Label Text="What is your message?"
+               VerticalOptions="Start" 
+               HorizontalOptions="Start" />
+
+        <Entry Grid.Row="1" 
+               Text="{Binding Prompt}"
+               WidthRequest="400"
+               HorizontalOptions="Start"
+               FontSize="Medium"
+               BackgroundColor="LightBlue"/>
+
+        <Button Grid.Row="2"
+                HorizontalOptions="Center"
+                Text="Ask a question"
+                WidthRequest="200"
+                Command="{Binding AskQuestionCommand}"/>
+
+        <ActivityIndicator Grid.Row="3"
+                           HorizontalOptions="Center"
+                           IsRunning="{Binding IsBusy}"/>
+
+        <Label Grid.Row="4"
+               Grid.ColumnSpan="3"
+               LineBreakMode="WordWrap"
+               WidthRequest="400"
+               HeightRequest="400"
+               FontSize="Medium"
+               BackgroundColor="LightGreen"
+               Text="{Binding Answer}"/>
+
+    </Grid>
+</ContentPage>
